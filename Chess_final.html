@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+	<button onclick="change_direction()">set_direction</button>
+	<button onclick = "move_forward()">single_move</button>
+	<button onclick = "jump_move_forward()">jump_forward</button>
+	<button onclick = "updatePosition()">move_Random</button>
+	<button onclick = "show_position()">where she is?</button>
+	<p id = "demo"></p>
+	<script>
+			var queen = {
+			direction:"S",
+			position_x:4,
+			position_y:0,
+
+
+		};
+
+	 function change_direction(){
+	 	
+		
+			var move = prompt("please enter the next move direction");
+			switch (move){
+					case "E":
+					queen.direction = "E";
+					break;
+				case "W":
+					queen.direction = "W";
+					break;
+				case "N":
+					queen.direction = "N";
+					break;
+				case "SE":
+					queen.direction = "SE";
+					break;
+				case "NE":
+					queen.direction = "NE";
+					break;
+				case "NW":
+					queen.direction = "NW";
+					break;
+				case "SW":
+					queen.direction = "SW";
+					break;
+			}alert("queen is in "+queen.direction +" direction");
+		}
+		function move_forward(){
+			var moves = prompt("move the queen by one step");
+			if (moves=="yes" && queen.position_y<=7){
+
+				queen.position_y+=1;
+				alert("queen is at postion [" +queen.position_x+","+queen.position_y+"]");
+			}
+			
+			else{
+				alert("Out of moves");
+			}
+
+		}
+		function jump_move_forward(){
+			var moves  = prompt("Jump the Queen in forward");
+			for(i=0;i<moves;i++)
+				{
+					queen.position_y+=1;
+				}		
+			if (queen.position_y<9){
+				alert("Queen is at position ["+queen.position_x+","+queen.position_y+"]");
+
+			}
+			else
+			{
+				alert("out of moves");
+		}
+		}
+		
+		function updatePosition(){
+			var next_pos = prompt("Enter The position and move");
+			var array = next_pos.split(" ",2);
+			queen.direction = array[0];
+			var x = queen.position_y+array[1];
+			alert("position is "+x);
+			
+
+
+		}
+		function show_position(){
+			alert("she is in "+ queen.direction+" and at ["+ queen.position_x+" ,"+queen.position_y+"]");
+
+		}
+	</script>
+
+</body>
+</html>
